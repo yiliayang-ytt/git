@@ -314,6 +314,7 @@ ifdef::git-rev-list[]
 	`<header>` text will be printed with each progress update.
 endif::git-rev-list[]
 
+ifndef::git-shortlog[]
 History Simplification
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -1000,3 +1001,4 @@ options may be given. See linkgit:git-diff-files[1] for more options.
 -t::
 	Show the tree objects in the diff output. This implies `-r`.
 endif::git-rev-list[]
+endif::git-shortlog[]
