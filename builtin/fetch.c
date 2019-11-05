@@ -1074,7 +1074,8 @@ static int check_exist_and_connected(struct ref *ref_map)
 	 * we need all direct targets to exist.
 	 */
 	for (r = rm; r; r = r->next) {
-		if (!has_object_file(&r->old_oid))
+		if (!has_object_file_with_flags(&r->old_oid,
+						OBJECT_INFO_SKIP_FETCH_OBJECT))
 			return -1;
 	}
 
@@ -1754,8 +1755,6 @@ int cmd_fetch(int argc, const char **argv, const char *prefix)
 	struct argv_array argv_gc_auto = ARGV_ARRAY_INIT;
 
 	packet_trace_identity("fetch");
-
-	fetch_if_missing = 0;
 
 	/* Record the command line for the reflog */
 	strbuf_addstr(&default_rla, "fetch");
