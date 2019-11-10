@@ -9,6 +9,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
+    - name: install curl
+      run: apt install curl
     - name: configure
       run: make configure
     - name: make
